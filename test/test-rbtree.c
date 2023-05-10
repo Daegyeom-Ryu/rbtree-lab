@@ -312,13 +312,12 @@ void test_to_array_suite() {
 
 void test_find_erase(rbtree *t, const key_t *arr, const size_t n) {
   for (int i = 0; i < n; i++) {
-    node_t *p = rbtree_insert(t, arr[i]);
+    node_t *p = rbtree_insert(t, arr[i]);    
     assert(p != NULL);
   }
-
+  
   for (int i = 0; i < n; i++) {
     node_t *p = rbtree_find(t, arr[i]);
-    // printf("arr[%d] = %d\n", i, arr[i]);
     assert(p != NULL);
     assert(p->key == arr[i]);
     rbtree_erase(t, p);
@@ -343,7 +342,7 @@ void test_find_erase(rbtree *t, const key_t *arr, const size_t n) {
 }
 
 void test_find_erase_fixed() {
-  const key_t arr[] = {10, 5, 8, 34, 67, 23, 156, 24, 2, 12, 24, 36, 990, 25};
+  const key_t arr[] = {10, 5, 8, 34, 67, 23, 156, 24, 2, 12, 24, 36, 990, 25};  
   const size_t n = sizeof(arr) / sizeof(arr[0]);
   rbtree *t = new_rbtree();
   assert(t != NULL);
